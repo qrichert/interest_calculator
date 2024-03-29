@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
 python inverse_loan.py 800.00
+(monthly payments)
 
     r = 12√(T+1) - 1
 <=> r = (T+1)^(1/12) - 1

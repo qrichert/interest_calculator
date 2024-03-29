@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
 python loan.py 200_000 240 1.25
+(amount, months, rate)
 
 https://fr.wikipedia.org/wiki/Amortissement_(finance)
 
