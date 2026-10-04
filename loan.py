@@ -12,10 +12,9 @@ K = Capital emprunté
 Ki = Capital restant dû (à la i-ème période)
 n = Nombre de périodes
 r = Taux mensuel
-T = Taux d'intérêt fixe annuel effectif (hors frais et assurance)
+T = Taux d'intérêt fixe annuel nominal (taux débiteur, hors frais et assurance)
 
-    r = 12√(T+1) - 1
-<=> r = (T+1)^(1/12) - 1
+    r = T / 12
 
 M = K * (r / (1 - (1+r)^-n))
 
@@ -60,7 +59,7 @@ def row2str(p, M, Ma, Mi, Ki) -> str:
     return " ".join((p, M, Ma, Mi, Ki))
 
 
-r = (T + 1) ** (Decimal(1) / 12) - 1
+r = T / 12
 M = K * (r / (1 - ((1 + r) ** (-n))))
 
 total_M = Decimal(0)

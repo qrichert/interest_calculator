@@ -3,10 +3,9 @@
 python inverse_loan.py 800.00
 (monthly payments)
 
-T = Taux d'intérêt annuel effectif (hors frais et assurance)
+T = Taux d'intérêt annuel nominal (taux débiteur, hors frais et assurance)
 
-    r = 12√(T+1) - 1
-<=> r = (T+1)^(1/12) - 1
+    r = T / 12
 
     M = K * (r / (1 - (1+r)^-n))
 <=> K = M / (r / (1 - (1+r)^-n))
@@ -35,7 +34,7 @@ for n in (5, 10, 15, 20, 25, 30):
     for T in [x / 100 for x in range(50, 425, 25)]:
         T = Decimal(T) / 100
 
-        r = (T + 1) ** (Decimal(1) / 12) - 1
+        r = T / 12
         K = M / (r / (1 - ((1 + r) ** (-n))))
 
         total_Mi = Decimal(0)
@@ -65,7 +64,7 @@ for n in (5, 10, 15, 20, 25, 30):
         table["Intérêts"].append("-")
         table["Total"].append("-")
 
-r = (T + 1) ** (Decimal(1) / 12) - 1
+r = T / 12
 K = M / (r / (1 - ((1 + r) ** (-n))))
 
 print(dict_of_lists_as_table(table, -1))

@@ -2,10 +2,9 @@
 
 The two conversions interpret the annual percentage differently:
 
-- **Effective annual rate:** `r = (1 + T)^(1/12) - 1`, used by both
-  scripts today.
+- **Effective annual rate:** `r = (1 + T)^(1/12) - 1`.
 - **Nominal annual rate:** `r = T / 12`, the standard French mortgage
-  convention.
+  convention, used by both scripts.
   [Crédit Agricole's mortgage formula](https://e-immobilier.credit-agricole.fr/conseils/marche/credit-immobilier-comprendre-votre-tableau-damortissement)
 
 Here `T` is the annual rate as a decimal and `r` is the monthly rate. In
@@ -19,19 +18,19 @@ percentage:
 
 | Annual-rate interpretation       | Monthly payment | Total interest |
 | -------------------------------- | --------------: | -------------: |
-| Effective — current conversion   |         €941.62 |     €25,989.73 |
 | Nominal — French bank convention |         €942.27 |     €26,144.19 |
+| Effective                        |         €941.62 |     €25,989.73 |
 
 These figures exclude fees and insurance. Totals use unrounded monthly
 payments; rounding each installment to cents can change the final
 installment and totals.
 
 For French bank comparisons, the nominal conversion takes the quoted
-**taux nominal / taux débiteur**. Both scripts currently interpret
-annual rates as effective. For `loan.py`, convert a nominal quote before
-entering it: `T_effective = (1 + T/12)^12 - 1`. This formula takes `T`
-as a decimal rate (e.g. `0.0125`); the CLI takes a percentage, so enter
-`100 * T_effective`.
+**taux nominal / taux débiteur**, which is what both scripts expect. For
+a loan quoted as an effective annual rate, convert it before entering
+it: `T_nominal = 12 * ((1 + T)^(1/12) - 1)`. This formula takes `T` as
+a decimal rate (e.g. `0.0125`); the CLI takes a percentage, so enter
+`100 * T_nominal`.
 
 **TAEG** includes additional costs, such as required insurance and fees;
 it is not the borrowing rate to enter into these calculations.

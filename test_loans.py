@@ -30,10 +30,10 @@ class LoanAccountingTests(unittest.TestCase):
                     )
                     balance = remaining
 
-    def test_known_interest_totals_and_unchanged_payments(self):
+    def test_known_payments_and_interest_totals(self):
         for args, payment, interest in (
-            (("200000", "240", "1.25"), "941.62", "25989.73"),
-            (("220000", "240", "3.5"), "1269.71", "84730.71"),
+            (("200000", "240", "1.25"), "942.27", "26144.19"),
+            (("220000", "240", "3.5"), "1275.91", "86218.73"),
         ):
             with self.subTest(args=args):
                 loan = run_script("loan.py", *args)
