@@ -3,6 +3,8 @@
 python inverse_loan.py 800.00
 (monthly payments)
 
+T = Taux d'intérêt annuel effectif (hors frais et assurance)
+
     r = 12√(T+1) - 1
 <=> r = (T+1)^(1/12) - 1
 
@@ -40,7 +42,7 @@ for n in (5, 10, 15, 20, 25, 30):
         Ki = K
         for i in range(n):
             p = i + 1
-            Mi = (T / 12) * Ki
+            Mi = r * Ki
 
             Ki = Ki * (1 + r) - M
 

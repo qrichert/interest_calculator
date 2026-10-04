@@ -12,14 +12,14 @@ K = Capital emprunté
 Ki = Capital restant dû (à la i-ème période)
 n = Nombre de périodes
 r = Taux mensuel
-T = Taux d'intérêt fixe annuel
+T = Taux d'intérêt fixe annuel effectif (hors frais et assurance)
 
     r = 12√(T+1) - 1
 <=> r = (T+1)^(1/12) - 1
 
 M = K * (r / (1 - (1+r)^-n))
 
-Mi = (T/12) * Ki
+Mi = r * Ki
 Ma = M - Mi
 """
 
@@ -70,7 +70,7 @@ Ki = K
 rows: list[list] = []
 for i in range(n):
     p = i + 1
-    Mi = (T / 12) * Ki
+    Mi = r * Ki
     Ma = M - Mi
 
     Ki = Ki * (1 + r) - M
@@ -84,7 +84,7 @@ for i in range(n):
 
 print("Capital emprunté:", dec2str(K), "€")
 print("Taux d'intérêt annuel fixe:", dec2str(T * 100), "%")
-print("Durée:", n, "mois", f"({n//12} ans)")
+print("Durée:", n, "mois", f"({n // 12} ans)")
 print("=> Mensualités:", dec2str(M), "€")
 print("=> Coût:", dec2str(total_Mi), "€")
 print("=> Total:", dec2str(K + total_Mi), "€")
